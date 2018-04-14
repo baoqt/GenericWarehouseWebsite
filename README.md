@@ -1,2 +1,12 @@
 # GenericWarehouseWebsite
-Database website project
+COMPE 561 Database website project
+
+---
+
+Giovanni
+
+Jack Tran
+
+Bao Tran
+
+---
