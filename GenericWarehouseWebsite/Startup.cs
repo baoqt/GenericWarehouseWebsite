@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Services;
+using GenericWarehouseWebsite.Models;
 
 namespace GenericWarehouseWebsite
 {
@@ -28,6 +29,10 @@ namespace GenericWarehouseWebsite
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<ComponentsContext>(options =>
+             options.UseSqlServer(Configuration.GetConnectionString("ComponentsContext")));
+            services.AddMvc();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
