@@ -6,14 +6,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GenericWarehouseWebsite.Models
 {
-    public class ComponentsContext : DbContext
+    public class ComponentContext : DbContext
     {
-        public ComponentsContext(DbContextOptions<ComponentsContext> options)
+        public ComponentContext(DbContextOptions<ComponentContext> options)
             : base(options)
         {
 
         }
 
-        public DbSet<Components> Components { get; set; }
+        public DbSet<Component> Component { get; set; } 
     }
 }

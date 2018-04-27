@@ -30,8 +30,8 @@ namespace GenericWarehouseWebsite
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDbContext<ComponentsContext>(options =>
-             options.UseSqlServer(Configuration.GetConnectionString("ComponentsContext")));
+            services.AddDbContext<ComponentContext>(options =>
+             options.UseSqlServer(Configuration.GetConnectionString("ComponentContext")));
             services.AddMvc();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()

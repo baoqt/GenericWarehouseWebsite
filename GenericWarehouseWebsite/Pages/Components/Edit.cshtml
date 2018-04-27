@@ -1,0 +1,60 @@
+@page
+@model GenericWarehouseWebsite.Pages.Components.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Component</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Component.ID" />
+            <div class="form-group">
+                <label asp-for="Component.PartNumber" class="control-label"></label>
+                <input asp-for="Component.PartNumber" class="form-control" />
+                <span asp-validation-for="Component.PartNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Component.Name" class="control-label"></label>
+                <input asp-for="Component.Name" class="form-control" />
+                <span asp-validation-for="Component.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Component.Description" class="control-label"></label>
+                <input asp-for="Component.Description" class="form-control" />
+                <span asp-validation-for="Component.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Component.Bin" class="control-label"></label>
+                <input asp-for="Component.Bin" class="form-control" />
+                <span asp-validation-for="Component.Bin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Component.Quantity" class="control-label"></label>
+                <input asp-for="Component.Quantity" class="form-control" />
+                <span asp-validation-for="Component.Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Component.Cost" class="control-label"></label>
+                <input asp-for="Component.Cost" class="form-control" />
+                <span asp-validation-for="Component.Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
