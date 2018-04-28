@@ -1,19 +1,14 @@
 # GenericWarehouseWebsite
-COMPE 561 Database website project
-
----
-
 Giovanni
-
 Jack Tran
-
 Bao Tran
-
 Taha Kittani
----
+## COMPE 561 Database website project
+Warehouse website for an online retailer.
+Not used by general consumer, but by employees and managers to handle their stocks.
+Has direct access to database.
 
-TODO:
-
+## TODO:
 1.	Login page
 	*	Make the home page a login prompt
 	*	Have different privileges for regular employee and manager
