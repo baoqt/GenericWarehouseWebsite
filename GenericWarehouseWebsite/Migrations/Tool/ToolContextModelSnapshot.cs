@@ -4,12 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
-namespace GenericWarehouseWebsite.Migrations
+namespace GenericWarehouseWebsite.Migrations.Tool
 {
-    [DbContext(typeof(ComponentContext))]
-    partial class ComponentContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ToolContext))]
+    partial class ToolContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -18,7 +20,7 @@ namespace GenericWarehouseWebsite.Migrations
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("GenericWarehouseWebsite.Models.Component", b =>
+            modelBuilder.Entity("GenericWarehouseWebsite.Models.Tool", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -37,7 +39,7 @@ namespace GenericWarehouseWebsite.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Component");
+                    b.ToTable("Tool");
                 });
 #pragma warning restore 612, 618
         }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GenericWarehouseWebsite.Models
 {
-    public class Component
+    public class Tool
     {
         public int ID { get; set; }
         public string PartNumber { get; set; }

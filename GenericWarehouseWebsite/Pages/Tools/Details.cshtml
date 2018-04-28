@@ -1,0 +1,55 @@
+@page
+@model GenericWarehouseWebsite.Pages.Tools.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tool</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tool.PartNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tool.PartNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tool.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tool.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tool.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tool.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tool.Bin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tool.Bin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tool.Quantity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tool.Quantity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tool.Cost)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tool.Cost)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Tool.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
