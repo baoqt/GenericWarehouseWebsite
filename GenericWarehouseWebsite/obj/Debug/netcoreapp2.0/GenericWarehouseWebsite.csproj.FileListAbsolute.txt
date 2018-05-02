@@ -10,3 +10,15 @@ C:\Users\BAO\source\repos\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\De
 C:\Users\BAO\source\repos\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfo.cs
 C:\Users\BAO\source\repos\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
 C:\Users\BAO\source\repos\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb
+D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.deps.json
+D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.runtimeconfig.json
+D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.runtimeconfig.dev.json
+D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
+D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb
+D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.csprojResolveAssemblyReference.cache
+D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.csproj.CoreCompileInputs.cache
+D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfoInputs.cache
+D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfo.cs
+D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
+D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb
