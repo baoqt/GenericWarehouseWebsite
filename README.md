@@ -26,3 +26,4 @@ Has direct access to database.
 	*	Maybe some pictures
 	*	Something to make it look a little less basic
 Did any one make an admin account for the website?
+trying to test some stuff
