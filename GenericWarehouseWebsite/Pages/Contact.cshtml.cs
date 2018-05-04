@@ -11,9 +11,7 @@ namespace GenericWarehouseWebsite.Pages
         public string Message { get; set; }
 
         public void OnGet()
-        {
-            Message = "For Help please contract\n";
-            
+        {            
             Message = "For Help please contract\nTaha Kittani\nBao Tran\nJack Tran\nGiovanni\n";
         }
     }
