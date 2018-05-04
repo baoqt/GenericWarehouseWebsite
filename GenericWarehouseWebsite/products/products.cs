@@ -8,8 +8,9 @@ namespace GenericWarehouseWebsite.NewFolder
     public class products
     {
         public int ID { get; set; }
-        public string Title { get; set; }
-        public DateTime ProDate { get; set; }
+        public int supplierID { get; set; }
+        public string proName { get; set; }
+        public DateTime ManufucturDate { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
     }
