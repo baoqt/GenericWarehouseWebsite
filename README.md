@@ -25,3 +25,4 @@ Has direct access to database.
 3.	Decoration
 	*	Maybe some pictures
 	*	Something to make it look a little less basic
+Did any one make an admin account for the website?
