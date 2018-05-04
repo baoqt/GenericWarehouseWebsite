@@ -22,3 +22,15 @@ D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\D
 D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfo.cs
 D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
 D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb
+C:\Users\Taha Kittani\Desktop\561 project\GenericWarehouseWebsite\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.deps.json
+C:\Users\Taha Kittani\Desktop\561 project\GenericWarehouseWebsite\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.runtimeconfig.json
+C:\Users\Taha Kittani\Desktop\561 project\GenericWarehouseWebsite\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.runtimeconfig.dev.json
+C:\Users\Taha Kittani\Desktop\561 project\GenericWarehouseWebsite\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
+C:\Users\Taha Kittani\Desktop\561 project\GenericWarehouseWebsite\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb
+C:\Users\Taha Kittani\Desktop\561 project\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.csprojResolveAssemblyReference.cache
+C:\Users\Taha Kittani\Desktop\561 project\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.csproj.CoreCompileInputs.cache
+C:\Users\Taha Kittani\Desktop\561 project\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Taha Kittani\Desktop\561 project\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfoInputs.cache
+C:\Users\Taha Kittani\Desktop\561 project\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfo.cs
+C:\Users\Taha Kittani\Desktop\561 project\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
+C:\Users\Taha Kittani\Desktop\561 project\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb

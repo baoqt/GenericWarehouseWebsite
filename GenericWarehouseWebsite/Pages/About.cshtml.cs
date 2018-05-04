@@ -12,7 +12,7 @@ namespace GenericWarehouseWebsite.Pages
 
         public void OnGet()
         {
-            Message = "Your application description page.";
+            Message = "This website is desgin for the warehouse of our company it contain useful info";
         }
     }
 }

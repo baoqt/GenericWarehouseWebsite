@@ -12,7 +12,9 @@ namespace GenericWarehouseWebsite.Pages
 
         public void OnGet()
         {
-            Message = "Your contact page.";
+            Message = "For Help please contract\n";
+            
+            Message = "For Help please contract\nTaha Kittani\nBao Tran\nJack Tran\nGiovanni\n";
         }
     }
 }
