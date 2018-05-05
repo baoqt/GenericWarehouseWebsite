@@ -7,5 +7,7 @@ namespace GenericWarehouseWebsite.Models
 {
     public class ProductContex
     {
+
+
     }
 }
