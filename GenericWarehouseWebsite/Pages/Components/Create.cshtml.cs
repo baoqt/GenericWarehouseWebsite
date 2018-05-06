@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
 
 namespace GenericWarehouseWebsite.Pages.Components
 {
     public class CreateModel : PageModel
     {
-        private readonly GenericWarehouseWebsite.Models.ComponentContext _context;
+        private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public CreateModel(GenericWarehouseWebsite.Models.ComponentContext context)
+        public CreateModel(GenericWarehouseWebsite.Data.WarehouseContext context)
         {
             _context = context;
         }
@@ -33,7 +34,7 @@ namespace GenericWarehouseWebsite.Pages.Components
                 return Page();
             }
 
-            _context.Component.Add(Component);
+            _context.Components.Add(Component);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

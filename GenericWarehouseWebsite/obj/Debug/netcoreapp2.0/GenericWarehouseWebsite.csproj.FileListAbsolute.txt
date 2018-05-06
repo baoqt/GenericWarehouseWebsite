@@ -17,8 +17,8 @@ D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\bin\D
 D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb
 D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.csprojResolveAssemblyReference.cache
 D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.csproj.CoreCompileInputs.cache
-D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
 D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfoInputs.cache
 D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfo.cs
 D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
 D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb
+D:\Documents\Software-Web Development\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

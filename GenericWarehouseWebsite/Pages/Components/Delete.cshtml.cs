@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
 
 namespace GenericWarehouseWebsite.Pages.Components
 {
     public class DeleteModel : PageModel
     {
-        private readonly GenericWarehouseWebsite.Models.ComponentContext _context;
+        private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public DeleteModel(GenericWarehouseWebsite.Models.ComponentContext context)
+        public DeleteModel(GenericWarehouseWebsite.Data.WarehouseContext context)
         {
             _context = context;
         }
@@ -28,7 +29,7 @@ namespace GenericWarehouseWebsite.Pages.Components
                 return NotFound();
             }
 
-            Component = await _context.Component.SingleOrDefaultAsync(m => m.ID == id);
+            Component = await _context.Components.SingleOrDefaultAsync(m => m.ID == id);
 
             if (Component == null)
             {
@@ -44,11 +45,11 @@ namespace GenericWarehouseWebsite.Pages.Components
                 return NotFound();
             }
 
-            Component = await _context.Component.FindAsync(id);
+            Component = await _context.Components.FindAsync(id);
 
             if (Component != null)
             {
-                _context.Component.Remove(Component);
+                _context.Components.Remove(Component);
                 await _context.SaveChangesAsync();
             }
 

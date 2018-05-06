@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
 
 namespace GenericWarehouseWebsite.Pages.Tools
 {
     public class IndexModel : PageModel
     {
-        private readonly GenericWarehouseWebsite.Models.ToolContext _context;
+        private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public IndexModel(GenericWarehouseWebsite.Models.ToolContext context)
+        public IndexModel(GenericWarehouseWebsite.Data.WarehouseContext context)
         {
             _context = context;
         }
@@ -22,7 +23,7 @@ namespace GenericWarehouseWebsite.Pages.Tools
 
         public async Task OnGetAsync()
         {
-            Tool = await _context.Tool.ToListAsync();
+            Tool = await _context.Tools.ToListAsync();
         }
     }
 }

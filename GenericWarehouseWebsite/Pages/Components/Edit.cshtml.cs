@@ -6,15 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
 
 namespace GenericWarehouseWebsite.Pages.Components
 {
     public class EditModel : PageModel
     {
-        private readonly GenericWarehouseWebsite.Models.ComponentContext _context;
+        private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public EditModel(GenericWarehouseWebsite.Models.ComponentContext context)
+        public EditModel(GenericWarehouseWebsite.Data.WarehouseContext context)
         {
             _context = context;
         }
@@ -29,7 +30,7 @@ namespace GenericWarehouseWebsite.Pages.Components
                 return NotFound();
             }
 
-            Component = await _context.Component.SingleOrDefaultAsync(m => m.ID == id);
+            Component = await _context.Components.SingleOrDefaultAsync(m => m.ID == id);
 
             if (Component == null)
             {
@@ -68,7 +69,7 @@ namespace GenericWarehouseWebsite.Pages.Components
 
         private bool ComponentExists(int id)
         {
-            return _context.Component.Any(e => e.ID == id);
+            return _context.Components.Any(e => e.ID == id);
         }
     }
 }

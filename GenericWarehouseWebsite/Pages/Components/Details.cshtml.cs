@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
 
 namespace GenericWarehouseWebsite.Pages.Components
 {
     public class DetailsModel : PageModel
     {
-        private readonly GenericWarehouseWebsite.Models.ComponentContext _context;
+        private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public DetailsModel(GenericWarehouseWebsite.Models.ComponentContext context)
+        public DetailsModel(GenericWarehouseWebsite.Data.WarehouseContext context)
         {
             _context = context;
         }
@@ -27,7 +28,7 @@ namespace GenericWarehouseWebsite.Pages.Components
                 return NotFound();
             }
 
-            Component = await _context.Component.SingleOrDefaultAsync(m => m.ID == id);
+            Component = await _context.Components.SingleOrDefaultAsync(m => m.ID == id);
 
             if (Component == null)
             {

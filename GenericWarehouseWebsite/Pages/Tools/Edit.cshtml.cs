@@ -6,15 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
 
 namespace GenericWarehouseWebsite.Pages.Tools
 {
     public class EditModel : PageModel
     {
-        private readonly GenericWarehouseWebsite.Models.ToolContext _context;
+        private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public EditModel(GenericWarehouseWebsite.Models.ToolContext context)
+        public EditModel(GenericWarehouseWebsite.Data.WarehouseContext context)
         {
             _context = context;
         }
@@ -29,7 +30,7 @@ namespace GenericWarehouseWebsite.Pages.Tools
                 return NotFound();
             }
 
-            Tool = await _context.Tool.SingleOrDefaultAsync(m => m.ID == id);
+            Tool = await _context.Tools.SingleOrDefaultAsync(m => m.ID == id);
 
             if (Tool == null)
             {
@@ -68,7 +69,7 @@ namespace GenericWarehouseWebsite.Pages.Tools
 
         private bool ToolExists(int id)
         {
-            return _context.Tool.Any(e => e.ID == id);
+            return _context.Tools.Any(e => e.ID == id);
         }
     }
 }

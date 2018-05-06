@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
 
 namespace GenericWarehouseWebsite.Pages.Tools
 {
     public class DeleteModel : PageModel
     {
-        private readonly GenericWarehouseWebsite.Models.ToolContext _context;
+        private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public DeleteModel(GenericWarehouseWebsite.Models.ToolContext context)
+        public DeleteModel(GenericWarehouseWebsite.Data.WarehouseContext context)
         {
             _context = context;
         }
@@ -28,7 +29,7 @@ namespace GenericWarehouseWebsite.Pages.Tools
                 return NotFound();
             }
 
-            Tool = await _context.Tool.SingleOrDefaultAsync(m => m.ID == id);
+            Tool = await _context.Tools.SingleOrDefaultAsync(m => m.ID == id);
 
             if (Tool == null)
             {
@@ -44,11 +45,11 @@ namespace GenericWarehouseWebsite.Pages.Tools
                 return NotFound();
             }
 
-            Tool = await _context.Tool.FindAsync(id);
+            Tool = await _context.Tools.FindAsync(id);
 
             if (Tool != null)
             {
-                _context.Tool.Remove(Tool);
+                _context.Tools.Remove(Tool);
                 await _context.SaveChangesAsync();
             }
 
