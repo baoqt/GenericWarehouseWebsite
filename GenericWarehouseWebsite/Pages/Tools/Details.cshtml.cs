@@ -28,7 +28,7 @@ namespace GenericWarehouseWebsite.Pages.Tools
                 return NotFound();
             }
 
-            Tool = await _context.Tools.SingleOrDefaultAsync(m => m.ID == id);
+            Tool = await _context.Tools.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Tool == null)
             {

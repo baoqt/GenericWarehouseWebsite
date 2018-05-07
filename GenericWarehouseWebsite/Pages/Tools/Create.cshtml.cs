@@ -33,11 +33,20 @@ namespace GenericWarehouseWebsite.Pages.Tools
             {
                 return Page();
             }
+            
+            var emptyTool = new Tool();
 
-            _context.Tools.Add(Tool);
-            await _context.SaveChangesAsync();
+            if (await TryUpdateModelAsync<Tool>(
+                emptyTool,
+                "tool",
+                s => s.Bin, s => s.Quantity, s => s.PartNumber, s => s.Cost, s => s.Name, s => s.Description))
+            {
+                _context.Tools.Add(Tool);
+                await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+                return RedirectToPage("./Index");
+            }
+            return null;
         }
     }
 }

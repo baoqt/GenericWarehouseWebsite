@@ -21,23 +21,33 @@ namespace GenericWarehouseWebsite.Pages.Tools
 
         [BindProperty]
         public Tool Tool { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Tool = await _context.Tools.SingleOrDefaultAsync(m => m.ID == id);
+            Tool = await _context.Tools
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (Tool == null)
             {
                 return NotFound();
             }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
+            }
+
             return Page();
         }
-
+        
         public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
@@ -45,15 +55,27 @@ namespace GenericWarehouseWebsite.Pages.Tools
                 return NotFound();
             }
 
-            Tool = await _context.Tools.FindAsync(id);
+            var tool = await _context.Tools
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Tool != null)
+            if (tool == null)
             {
-                _context.Tools.Remove(Tool);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.Tools.Remove(tool);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                    new { id = id, saveChangesError = true });
+            }
         }
     }
 }

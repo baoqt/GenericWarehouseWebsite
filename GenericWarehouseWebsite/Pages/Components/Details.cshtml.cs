@@ -28,7 +28,7 @@ namespace GenericWarehouseWebsite.Pages.Components
                 return NotFound();
             }
 
-            Component = await _context.Components.SingleOrDefaultAsync(m => m.ID == id);
+            Component = await _context.Components.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Component == null)
             {

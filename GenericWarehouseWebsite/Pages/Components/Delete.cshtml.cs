@@ -21,20 +21,28 @@ namespace GenericWarehouseWebsite.Pages.Components
 
         [BindProperty]
         public Component Component { get; set; }
-
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public string ErrorMessage { get; set; }
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Component = await _context.Components.SingleOrDefaultAsync(m => m.ID == id);
+            Component = await _context.Components
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (Component == null)
             {
                 return NotFound();
             }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
+            }
+
             return Page();
         }
 
@@ -45,15 +53,27 @@ namespace GenericWarehouseWebsite.Pages.Components
                 return NotFound();
             }
 
-            Component = await _context.Components.FindAsync(id);
+            var component = await _context.Components
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Component != null)
+            if (component == null)
             {
-                _context.Components.Remove(Component);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.Components.Remove(component);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                    new { id = id, saveChangesError = true });
+            }
         }
     }
 }

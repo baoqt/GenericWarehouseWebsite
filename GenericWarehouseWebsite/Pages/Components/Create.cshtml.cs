@@ -34,10 +34,19 @@ namespace GenericWarehouseWebsite.Pages.Components
                 return Page();
             }
 
-            _context.Components.Add(Component);
-            await _context.SaveChangesAsync();
+            var emptyComponent = new Component();
 
-            return RedirectToPage("./Index");
+            if (await TryUpdateModelAsync<Component>(
+                emptyComponent,
+                "component",
+                s => s.Bin, s => s.Quantity, s => s.PartNumber, s => s.Cost, s => s.Name, s => s.Description))
+            {
+                _context.Components.Add(Component);
+                await _context.SaveChangesAsync();
+
+                return RedirectToPage("./Index");
+            }
+            return null;
         }
     }
 }
