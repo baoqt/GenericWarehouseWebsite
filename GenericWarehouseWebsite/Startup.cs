@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Services;
 using GenericWarehouseWebsite.Models;
@@ -27,17 +28,18 @@ namespace GenericWarehouseWebsite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           
-                services.AddDirectoryBrowser();
-            
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDbContext<ComponentContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddMvc();
+            //services.AddDbContext<ComponentContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddMvc();
 
-            services.AddDbContext<ToolContext>(options =>
+            //services.AddDbContext<ToolContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddMvc();
+
+            services.AddDbContext<WarehouseContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc();
 

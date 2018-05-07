@@ -7,10 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
+using GenericWarehouseWebsite.Data;
 
 namespace GenericWarehouseWebsite.Migrations.Tool
 {
-    [DbContext(typeof(ToolContext))]
+    [DbContext(typeof(WarehouseContext))]
     partial class ToolContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

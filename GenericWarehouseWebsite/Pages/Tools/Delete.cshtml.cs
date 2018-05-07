@@ -5,35 +5,46 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
 
 namespace GenericWarehouseWebsite.Pages.Tools
 {
     public class DeleteModel : PageModel
     {
-        private readonly GenericWarehouseWebsite.Models.ToolContext _context;
+        private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public DeleteModel(GenericWarehouseWebsite.Models.ToolContext context)
+        public DeleteModel(GenericWarehouseWebsite.Data.WarehouseContext context)
         {
             _context = context;
         }
 
         [BindProperty]
         public Tool Tool { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Tool = await _context.Tool.SingleOrDefaultAsync(m => m.ID == id);
+            Tool = await _context.Tools
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (Tool == null)
             {
                 return NotFound();
             }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
+            }
+
             return Page();
         }
 
@@ -44,15 +55,27 @@ namespace GenericWarehouseWebsite.Pages.Tools
                 return NotFound();
             }
 
-            Tool = await _context.Tool.FindAsync(id);
+            var tool = await _context.Tools
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Tool != null)
+            if (tool == null)
             {
-                _context.Tool.Remove(Tool);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.Tools.Remove(tool);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                    new { id = id, saveChangesError = true });
+            }
         }
     }
 }

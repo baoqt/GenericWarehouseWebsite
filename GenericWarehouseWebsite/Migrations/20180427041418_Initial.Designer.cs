@@ -7,10 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
+using GenericWarehouseWebsite.Data;
 
 namespace GenericWarehouseWebsite.Migrations
 {
-    [DbContext(typeof(ComponentContext))]
+    [DbContext(typeof(WarehouseContext))]
     [Migration("20180427041418_Initial")]
     partial class Initial
     {

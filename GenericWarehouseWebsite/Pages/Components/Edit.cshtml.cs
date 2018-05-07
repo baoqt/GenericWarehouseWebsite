@@ -6,15 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
 
 namespace GenericWarehouseWebsite.Pages.Components
 {
     public class EditModel : PageModel
     {
-        private readonly GenericWarehouseWebsite.Models.ComponentContext _context;
+        private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public EditModel(GenericWarehouseWebsite.Models.ComponentContext context)
+        public EditModel(GenericWarehouseWebsite.Data.WarehouseContext context)
         {
             _context = context;
         }
@@ -29,7 +30,8 @@ namespace GenericWarehouseWebsite.Pages.Components
                 return NotFound();
             }
 
-            Component = await _context.Component.SingleOrDefaultAsync(m => m.ID == id);
+            //Component = await _context.Components.FirstOrDefaultAsync(m => m.ID == id);
+            Component = await _context.Components.FindAsync(id);
 
             if (Component == null)
             {
@@ -38,7 +40,7 @@ namespace GenericWarehouseWebsite.Pages.Components
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (!ModelState.IsValid)
             {
@@ -46,29 +48,36 @@ namespace GenericWarehouseWebsite.Pages.Components
             }
 
             _context.Attach(Component).State = EntityState.Modified;
+            var componentToUpdate = await _context.Components.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<Component>(
+                componentToUpdate,
+                "component",
+                s => s.Bin, s => s.Quantity, s => s.PartNumber, s => s.Cost, s => s.Name, s => s.Description))
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ComponentExists(Component.ID))
+                try
                 {
-                    return NotFound();
+                    await _context.SaveChangesAsync();
+                    return RedirectToPage("./Index");
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!ComponentExists(Component.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
-
-            return RedirectToPage("./Index");
+            return Page();
         }
 
         private bool ComponentExists(int id)
         {
-            return _context.Component.Any(e => e.ID == id);
+            return _context.Components.Any(e => e.ID == id);
         }
     }
 }

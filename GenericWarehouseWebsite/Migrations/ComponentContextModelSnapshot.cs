@@ -5,10 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
+using GenericWarehouseWebsite.Data;
 
 namespace GenericWarehouseWebsite.Migrations
 {
-    [DbContext(typeof(ComponentContext))]
+    [DbContext(typeof(WarehouseContext))]
     partial class ComponentContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

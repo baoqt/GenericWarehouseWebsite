@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
 
 namespace GenericWarehouseWebsite.Pages.Tools
 {
     public class CreateModel : PageModel
     {
-        private readonly GenericWarehouseWebsite.Models.ToolContext _context;
+        private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public CreateModel(GenericWarehouseWebsite.Models.ToolContext context)
+        public CreateModel(GenericWarehouseWebsite.Data.WarehouseContext context)
         {
             _context = context;
         }
@@ -33,10 +34,19 @@ namespace GenericWarehouseWebsite.Pages.Tools
                 return Page();
             }
 
-            _context.Tool.Add(Tool);
-            await _context.SaveChangesAsync();
+            var emptyTool = new Tool();
 
-            return RedirectToPage("./Index");
+            if (await TryUpdateModelAsync<Tool>(
+                emptyTool,
+                "tool",
+                s => s.Bin, s => s.Quantity, s => s.PartNumber, s => s.Cost, s => s.Name, s => s.Description))
+            {
+                _context.Tools.Add(Tool);
+                await _context.SaveChangesAsync();
+
+                return RedirectToPage("./Index");
+            }
+            return null;
         }
     }
 }

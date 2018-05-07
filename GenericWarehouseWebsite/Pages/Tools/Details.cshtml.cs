@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
 
 namespace GenericWarehouseWebsite.Pages.Tools
 {
     public class DetailsModel : PageModel
     {
-        private readonly GenericWarehouseWebsite.Models.ToolContext _context;
+        private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public DetailsModel(GenericWarehouseWebsite.Models.ToolContext context)
+        public DetailsModel(GenericWarehouseWebsite.Data.WarehouseContext context)
         {
             _context = context;
         }
@@ -27,7 +28,7 @@ namespace GenericWarehouseWebsite.Pages.Tools
                 return NotFound();
             }
 
-            Tool = await _context.Tool.SingleOrDefaultAsync(m => m.ID == id);
+            Tool = await _context.Tools.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Tool == null)
             {
