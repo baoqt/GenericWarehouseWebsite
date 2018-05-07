@@ -26,6 +26,9 @@ namespace GenericWarehouseWebsite
                 {
                     var context = services.GetRequiredService<WarehouseContext>();
                     DbInitializer.Initialize(context);
+
+                    var accounts = services.GetRequiredService<AccountContext>();
+                    DbInitializer.AccountInitialize(accounts);
                 }
                 catch (Exception ex)
                 {

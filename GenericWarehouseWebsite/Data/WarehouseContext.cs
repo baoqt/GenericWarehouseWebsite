@@ -10,8 +10,11 @@ namespace GenericWarehouseWebsite.Data
 {
     public class WarehouseContext : DbContext
     {
-        public WarehouseContext(DbContextOptions<WarehouseContext> options) : base(options)
-        { }
+        public WarehouseContext(DbContextOptions<WarehouseContext> options) 
+            : base(options)
+        {
+
+        }
 
         public DbSet<Models.Component> Components { get; set; }
         public DbSet<Tool> Tools { get; set; }

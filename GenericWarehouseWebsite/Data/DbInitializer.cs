@@ -2,13 +2,58 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 using GenericWarehouseWebsite.Models;
 
 namespace GenericWarehouseWebsite.Data
 {
     public class DbInitializer
     {
+        public static void AccountInitialize(AccountContext context)
+        {
+            context.Database.EnsureCreated();
+
+            if (context.Account.Any())
+            {
+                return;
+            }
+
+            var accounts = new Account[]
+            {
+                new Account
+                {
+                    EmployeeNumber = 1,
+                    FirstName = "John",
+                    LastName = "Smith",
+                    IsManager = true
+                },
+                new Account
+                {
+                    EmployeeNumber = 2,
+                    FirstName = "Jane",
+                    LastName = "Doe",
+                    IsManager = true
+                },
+                new Account
+                {
+                    EmployeeNumber = 3,
+                    FirstName = "Bob",
+                    LastName = "Ryan",
+                    IsManager = false
+                },
+                new Account
+                {
+                    EmployeeNumber = 4,
+                    FirstName = "Kelly",
+                    LastName = "John",
+                    IsManager = false
+                }
+            };
+            foreach (Account s in accounts)
+            {
+                context.Account.Add(s);
+            }
+            context.SaveChanges();
+        }
         public static void Initialize(WarehouseContext context)
         {
             context.Database.EnsureCreated();
@@ -20,24 +65,33 @@ namespace GenericWarehouseWebsite.Data
             #region Seeding Component Table
             var components = new Component[]
             {
-                new Component{PartNumber = "240242-01",
+                new Component
+                {
+                    PartNumber = "240242-01",
                     Name = "MAGNET DEFUSER",
                     Description = "LCS50-150 MOD2263",
                     Bin = "14F",
                     Quantity = 100,
-                    Cost = 50M},
-                new Component{PartNumber = "63589-02",
+                    Cost = 50M
+                },
+                new Component
+                {
+                    PartNumber = "63589-02",
                     Name = "CROSS ROLLER GUIDE RAIL",
                     Description = "LRX 12 R100 BPS2",
                     Bin = "13F",
                     Quantity = 100,
-                    Cost = 5.25M},
-                new Component{PartNumber = "53006-00",
+                    Cost = 5.25M
+                },
+                new Component
+                {
+                    PartNumber = "53006-00",
                     Name = "SCREW, SHC, M2x12 LG.",
                     Description = "M2x0.4x12 LG",
                     Bin = "14F",
                     Quantity = 100,
-                    Cost = 0.04M}
+                    Cost = 0.04M
+                }
             };
             foreach (Component s in components)
             {

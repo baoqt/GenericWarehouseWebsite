@@ -1,0 +1,46 @@
+@page
+@model GenericWarehouseWebsite.Pages_Accounts.IndexModel
+
+@{
+    ViewData["Title"] = "Employee Directory";
+}
+
+<h2>Employee Directory</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Account[0].EmployeeNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Account[0].FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Account[0].LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Account[0].IsManager)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Account) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsManager)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
