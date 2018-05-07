@@ -53,7 +53,7 @@ namespace GenericWarehouseWebsite.Pages.Tools
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ToolExists(Tool.ID))
+                if (!_context.Tool.Any(e => e.ID == Tool.ID))
                 {
                     return NotFound();
                 }
