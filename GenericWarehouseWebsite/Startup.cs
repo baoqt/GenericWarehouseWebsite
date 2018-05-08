@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GenericWarehouseWebsite.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Services;
 using GenericWarehouseWebsite.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GenericWarehouseWebsite
 {
@@ -51,6 +53,11 @@ namespace GenericWarehouseWebsite
             // Register no-op EmailSender used by account confirmation and password reset during development
             // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
             services.AddSingleton<IEmailSender, EmailSender>();
+
+            // Authorization handlers.
+            services.AddScoped<IAuthorizationHandler,
+                IsOwnerAuthorizationHandler>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

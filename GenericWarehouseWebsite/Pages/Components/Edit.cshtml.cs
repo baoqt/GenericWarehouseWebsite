@@ -2,82 +2,93 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GenericWarehouseWebsite.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Azure.KeyVault.Models;
 
 namespace GenericWarehouseWebsite.Pages.Components
 {
-    public class EditModel : PageModel
+    public class EditModel : DI_BasePageModel
     {
         private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public EditModel(GenericWarehouseWebsite.Data.WarehouseContext context)
+        public EditModel(
+            ApplicationDbContext context,
+            IAuthorizationService authorizationService,
+            UserManager<ApplicationUser> userManager)
+            : base(context, authorizationService, userManager)
         {
-            _context = context;
         }
 
         [BindProperty]
         public Component Component { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            //Component = await _context.Components.FirstOrDefaultAsync(m => m.ID == id);
-            Component = await _context.Components.FindAsync(id);
+            Component = await Context.Component.FirstOrDefaultAsync(
+                m => m.ID == id);
 
             if (Component == null)
             {
                 return NotFound();
             }
+
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                User, Component,
+                InformationAuthorization.Update);
+            if (!isAuthorized.Succeeded)
+            {
+                return new ChallengeResult();
+            }
+
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Component).State = EntityState.Modified;
-            var componentToUpdate = await _context.Components.FindAsync(id);
+            // Fetch Contact from DB to get OwnerID.
+            var contact = await Context
+                .Component.AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
-            if (await TryUpdateModelAsync<Component>(
-                componentToUpdate,
-                "component",
-                s => s.Bin, s => s.Quantity, s => s.PartNumber, s => s.Cost, s => s.Name, s => s.Description))
+            if (contact == null)
             {
-                try
-                {
-                    await _context.SaveChangesAsync();
-                    return RedirectToPage("./Index");
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ComponentExists(Component.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                return NotFound();
             }
-            return Page();
+
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                User, contact,
+                InformationAuthorization.Update);
+            if (!isAuthorized.Succeeded)
+            {
+                return new ChallengeResult();
+            }
+
+            Component.OwnerID = contact.OwnerID;
+
+            Context.Attach(Component).State = EntityState.Modified;
+
+            await Context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
         }
 
-        private bool ComponentExists(int id)
+        private bool ContactExists(int id)
         {
-            return _context.Components.Any(e => e.ID == id);
+            return Context.Component.Any(e => e.ID == id);
         }
     }
+
 }

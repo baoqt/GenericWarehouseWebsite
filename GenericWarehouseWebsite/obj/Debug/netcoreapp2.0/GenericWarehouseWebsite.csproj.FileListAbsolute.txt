@@ -58,3 +58,15 @@ C:\Users\Giovnni\source\repos\FinalProject\GenericWarehouseWebsite\obj\Debug\net
 C:\Users\Giovnni\source\repos\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfo.cs
 C:\Users\Giovnni\source\repos\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
 C:\Users\Giovnni\source\repos\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb
+C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.deps.json
+C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.runtimeconfig.json
+C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.runtimeconfig.dev.json
+C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
+C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb
+C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.csprojResolveAssemblyReference.cache
+C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.csproj.CoreCompileInputs.cache
+C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfoInputs.cache
+C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfo.cs
+C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
+C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb

@@ -10,6 +10,8 @@ namespace GenericWarehouseWebsite.Models
     {
         public int ID { get; set; }
 
+        public string OwnerID { get; set; }
+
         [Display(Name = "Part Number")]
         public string PartNumber { get; set; }
         public string Name { get; set; }

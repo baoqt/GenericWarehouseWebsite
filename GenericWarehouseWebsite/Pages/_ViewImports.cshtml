@@ -3,3 +3,7 @@
 @using GenericWarehouseWebsite.Data
 @namespace GenericWarehouseWebsite.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using GenericWarehouseWebsite.Authorization;
+@using Microsoft.AspNetCore.Authorization
+@using GenericWarehouseWebsite.Models
+@inject IAuthorizationService AuthorizationService
