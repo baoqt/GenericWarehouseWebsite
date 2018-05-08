@@ -55,10 +55,29 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Cost)
             </td>
-            <td>
+            @*<td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>*@
+            <td>
+                @if ((await AuthorizationService.AuthorizeAsync(
+                    User, item,
+                    InformationAuthorization.Update)).Succeeded)
+                {
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
+                    <text> | </text>
+                }
+
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
+
+                @if ((await AuthorizationService.AuthorizeAsync(
+                    User, item,
+                    InformationAuthorization.Delete)).Succeeded)
+                {
+                    <text> | </text>
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                }
             </td>
         </tr>
 }

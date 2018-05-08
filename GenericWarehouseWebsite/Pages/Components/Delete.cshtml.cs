@@ -7,73 +7,72 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using GenericWarehouseWebsite.Authorization;
 
 namespace GenericWarehouseWebsite.Pages.Components
 {
-    public class DeleteModel : PageModel
+    public class DeleteModel : DI_BasePageModel
     {
         private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public DeleteModel(GenericWarehouseWebsite.Data.WarehouseContext context)
+        public DeleteModel(
+            ApplicationDbContext context,
+            IAuthorizationService authorizationService,
+            UserManager<ApplicationUser> userManager)
+            : base(context, authorizationService, userManager)
         {
-            _context = context;
         }
-
         [BindProperty]
         public Component Component { get; set; }
         public string ErrorMessage { get; set; }
-        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Component = await _context.Components
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.ID == id);
+            Component = await Context.Component.FirstOrDefaultAsync(
+                m => m.ID == id);
 
             if (Component == null)
             {
                 return NotFound();
             }
 
-            if (saveChangesError.GetValueOrDefault())
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                User, Component,
+                InformationAuthorization.Delete);
+            if (!isAuthorized.Succeeded)
             {
-                ErrorMessage = "Delete failed. Try again";
+                return new ChallengeResult();
             }
 
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            Component = await Context.Component.FindAsync(id);
 
-            var component = await _context.Components
-                .AsNoTracking()
+            var contact = await Context
+                .Component.AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
 
-            if (component == null)
+            if (contact == null)
             {
                 return NotFound();
             }
 
-            try
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                User, contact,
+                InformationAuthorization.Delete);
+            if (!isAuthorized.Succeeded)
             {
-                _context.Components.Remove(component);
-                await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+                return new ChallengeResult();
             }
-            catch (DbUpdateException /* ex */)
-            {
-                //Log the error (uncomment ex variable name and write a log.)
-                return RedirectToAction("./Delete",
-                    new { id = id, saveChangesError = true });
-            }
+
+            Context.Component.Remove(Component);
+            await Context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
         }
     }
 }
