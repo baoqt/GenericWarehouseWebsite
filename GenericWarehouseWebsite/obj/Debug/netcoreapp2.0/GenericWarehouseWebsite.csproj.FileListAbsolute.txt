@@ -70,3 +70,15 @@ C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsit
 C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfo.cs
 C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
 C:\Users\JACK-PC\Documents\GitHub\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb
+C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.deps.json
+C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.runtimeconfig.json
+C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.runtimeconfig.dev.json
+C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
+C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb
+C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.csprojAssemblyReference.cache
+C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.csproj.CoreCompileInputs.cache
+C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfoInputs.cache
+C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfo.cs
+C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
+C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb

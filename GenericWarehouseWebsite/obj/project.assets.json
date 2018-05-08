@@ -6067,7 +6067,7 @@
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
-      "sha512": "FxbXQUur+P2KMzV1yVJBVcsvOEVtUSOwKiAm/oR6qey/bxgNAvikH4LLSTMu/CXe8TaTf1uI7betn9E+0Bzn/w==",
+      "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
       "type": "package",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
       "files": [
@@ -8017,7 +8017,7 @@
       ]
     },
     "Remotion.Linq/2.1.1": {
-      "sha512": "0u8pkGAKkCvZ58RTLrjct0BZKxBqnZNSld19IuYu5+7DI0kxpra7c4XcCRjH77fjAZPlfdPTxBw8yh/iUX9oTw==",
+      "sha512": "IJn0BqkvwEDpP+2qjvci7n4/a9f7DhKESLWb2/uG4xQh3rTkGTBUz69bI4IivCoKkTFAqjXxYDZw2K/npohjsw==",
       "type": "package",
       "path": "remotion.linq/2.1.1",
       "files": [
@@ -13125,27 +13125,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\JACK-PC\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\ggarcia4\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\JACK-PC\\Documents\\GitHub\\GenericWarehouseWebsite\\GenericWarehouseWebsite\\GenericWarehouseWebsite.csproj",
+      "projectUniqueName": "C:\\Users\\ggarcia4\\source\\repos\\FinalProject\\GenericWarehouseWebsite\\GenericWarehouseWebsite.csproj",
       "projectName": "GenericWarehouseWebsite",
-      "projectPath": "C:\\Users\\JACK-PC\\Documents\\GitHub\\GenericWarehouseWebsite\\GenericWarehouseWebsite\\GenericWarehouseWebsite.csproj",
-      "packagesPath": "C:\\Users\\JACK-PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\JACK-PC\\Documents\\GitHub\\GenericWarehouseWebsite\\GenericWarehouseWebsite\\obj\\",
+      "projectPath": "C:\\Users\\ggarcia4\\source\\repos\\FinalProject\\GenericWarehouseWebsite\\GenericWarehouseWebsite.csproj",
+      "packagesPath": "C:\\Users\\ggarcia4\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ggarcia4\\source\\repos\\FinalProject\\GenericWarehouseWebsite\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\JACK-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\ggarcia4\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
