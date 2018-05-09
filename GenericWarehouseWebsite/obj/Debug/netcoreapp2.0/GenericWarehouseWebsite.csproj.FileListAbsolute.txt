@@ -82,3 +82,15 @@ C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\obj\Debug\ne
 C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfo.cs
 C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
 C:\Users\ggarcia4\source\repos\FinalProject\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb
+C:\Users\Taha Kittani\Desktop\561 project\New folder\GenericWarehouseWebsite\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.deps.json
+C:\Users\Taha Kittani\Desktop\561 project\New folder\GenericWarehouseWebsite\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.runtimeconfig.json
+C:\Users\Taha Kittani\Desktop\561 project\New folder\GenericWarehouseWebsite\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.runtimeconfig.dev.json
+C:\Users\Taha Kittani\Desktop\561 project\New folder\GenericWarehouseWebsite\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
+C:\Users\Taha Kittani\Desktop\561 project\New folder\GenericWarehouseWebsite\GenericWarehouseWebsite\bin\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb
+C:\Users\Taha Kittani\Desktop\561 project\New folder\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.csprojResolveAssemblyReference.cache
+C:\Users\Taha Kittani\Desktop\561 project\New folder\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.csproj.CoreCompileInputs.cache
+C:\Users\Taha Kittani\Desktop\561 project\New folder\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Taha Kittani\Desktop\561 project\New folder\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfoInputs.cache
+C:\Users\Taha Kittani\Desktop\561 project\New folder\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.AssemblyInfo.cs
+C:\Users\Taha Kittani\Desktop\561 project\New folder\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.dll
+C:\Users\Taha Kittani\Desktop\561 project\New folder\GenericWarehouseWebsite\GenericWarehouseWebsite\obj\Debug\netcoreapp2.0\GenericWarehouseWebsite.pdb
