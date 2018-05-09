@@ -2,21 +2,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GenericWarehouseWebsite.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
+using GenericWarehouseWebsite.Pages.Components;
+using Microsoft.Azure.KeyVault.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace GenericWarehouseWebsite.Pages.Tools
 {
-    public class CreateModel : PageModel
+    public class CreateModel : DI_BasePageModel
     {
         private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public CreateModel(GenericWarehouseWebsite.Data.WarehouseContext context)
+        public CreateModel(
+            ApplicationDbContext context,
+            IAuthorizationService authorizationService,
+            UserManager<ApplicationUser> userManager)
+            : base(context, authorizationService, userManager)
         {
-            _context = context;
         }
 
         public IActionResult OnGet()
@@ -34,19 +42,21 @@ namespace GenericWarehouseWebsite.Pages.Tools
                 return Page();
             }
 
-            var emptyTool = new Tool();
+            Tool.OwnerID = UserManager.GetUserId(User);
 
-            if (await TryUpdateModelAsync<Tool>(
-                emptyTool,
-                "tool",
-                s => s.Bin, s => s.Quantity, s => s.PartNumber, s => s.Cost, s => s.Name, s => s.Description))
+            // requires using ContactManager.Authorization;
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                User, Tool,
+                InformationAuthorization.Create);
+            if (!isAuthorized.Succeeded)
             {
-                _context.Tools.Add(Tool);
-                await _context.SaveChangesAsync();
-
-                return RedirectToPage("./Index");
+                return new ChallengeResult();
             }
-            return null;
+
+            Context.Tool.Add(Tool);
+            await Context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
         }
     }
 }

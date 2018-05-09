@@ -7,16 +7,24 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using GenericWarehouseWebsite.Authorization;
+using GenericWarehouseWebsite.Pages.Components;
+using GenericWarehouseWebsite.Pages.Tools;
 
 namespace GenericWarehouseWebsite.Pages.Tools
 {
-    public class DeleteModel : PageModel
+    public class DeleteModel : DI_BasePageModel
     {
         private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public DeleteModel(GenericWarehouseWebsite.Data.WarehouseContext context)
+        public DeleteModel(
+            ApplicationDbContext context,
+            IAuthorizationService authorizationService,
+            UserManager<ApplicationUser> userManager)
+            : base(context, authorizationService, userManager)
         {
-            _context = context;
         }
 
         [BindProperty]
@@ -24,58 +32,52 @@ namespace GenericWarehouseWebsite.Pages.Tools
         public string ErrorMessage { get; set; }
 
 
-        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Tool = await _context.Tools
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.ID == id);
+            Tool = await Context.Tool.FirstOrDefaultAsync(
+                m => m.ID == id);
 
             if (Tool == null)
             {
                 return NotFound();
             }
 
-            if (saveChangesError.GetValueOrDefault())
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                User, Tool,
+                InformationAuthorization.Delete);
+            if (!isAuthorized.Succeeded)
             {
-                ErrorMessage = "Delete failed. Try again";
+                return new ChallengeResult();
             }
 
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            Tool = await Context.Tool.FindAsync(id);
 
-            var tool = await _context.Tools
-                .AsNoTracking()
+            var contact = await Context
+                .Tool.AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
 
-            if (tool == null)
+            if (contact == null)
             {
                 return NotFound();
             }
 
-            try
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                User, contact,
+                InformationAuthorization.Delete);
+            if (!isAuthorized.Succeeded)
             {
-                _context.Tools.Remove(tool);
-                await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+                return new ChallengeResult();
             }
-            catch (DbUpdateException /* ex */)
-            {
-                //Log the error (uncomment ex variable name and write a log.)
-                return RedirectToAction("./Delete",
-                    new { id = id, saveChangesError = true });
-            }
+
+            Context.Tool.Remove(Tool);
+            await Context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
         }
     }
 }
