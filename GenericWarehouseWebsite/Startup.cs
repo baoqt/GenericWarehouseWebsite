@@ -46,8 +46,6 @@ namespace GenericWarehouseWebsite
             services.AddMvc()
                 .AddRazorPagesOptions(options =>
                 {
-                    options.Conventions.AuthorizeFolder("/Tools");
-                    options.Conventions.AuthorizeFolder("/Components");
                     options.Conventions.AuthorizeFolder("/Account/Manage");
                     options.Conventions.AuthorizePage("/Account/Logout");
                 });
@@ -59,12 +57,7 @@ namespace GenericWarehouseWebsite
             // Authorization handlers.
             services.AddScoped<IAuthorizationHandler,
                 IsOwnerAuthorizationHandler>();
-            services.AddScoped<IAuthorizationHandler,
-                TIsOwnerAuthorizationHandler>();
-            services.AddSingleton<IAuthorizationHandler,
-                AdminAuthorizationHandler>();
-            services.AddSingleton<IAuthorizationHandler,
-                TAdminAuthorizationHandler>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

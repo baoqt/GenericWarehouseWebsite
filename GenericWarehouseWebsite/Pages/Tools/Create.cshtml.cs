@@ -2,29 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GenericWarehouseWebsite.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
-using GenericWarehouseWebsite.Pages.Components;
-using Microsoft.Azure.KeyVault.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 
 namespace GenericWarehouseWebsite.Pages.Tools
 {
-    public class CreateModel : DI_BasePageModel
+    public class CreateModel : PageModel
     {
         private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public CreateModel(
-            ApplicationDbContext context,
-            IAuthorizationService authorizationService,
-            UserManager<ApplicationUser> userManager)
-            : base(context, authorizationService, userManager)
+        public CreateModel(GenericWarehouseWebsite.Data.WarehouseContext context)
         {
+            _context = context;
         }
 
         public IActionResult OnGet()
@@ -42,21 +34,19 @@ namespace GenericWarehouseWebsite.Pages.Tools
                 return Page();
             }
 
-            Tool.OwnerID = UserManager.GetUserId(User);
+            var emptyTool = new Tool();
 
-            // requires using ContactManager.Authorization;
-            var isAuthorized = await AuthorizationService.AuthorizeAsync(
-                User, Tool,
-                InformationAuthorization.Create);
-            if (!isAuthorized.Succeeded)
+            if (await TryUpdateModelAsync<Tool>(
+                emptyTool,
+                "tool",
+                s => s.Bin, s => s.Quantity, s => s.PartNumber, s => s.Cost, s => s.Name, s => s.Description))
             {
-                return new ChallengeResult();
+                _context.Tools.Add(Tool);
+                await _context.SaveChangesAsync();
+
+                return RedirectToPage("./Index");
             }
-
-            Context.Tool.Add(Tool);
-            await Context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            return null;
         }
     }
 }

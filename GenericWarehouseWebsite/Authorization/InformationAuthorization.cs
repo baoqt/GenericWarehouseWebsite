@@ -19,6 +19,12 @@ namespace GenericWarehouseWebsite.Authorization
 
         public static OperationAuthorizationRequirement Delete =
             new OperationAuthorizationRequirement {Name = Constants.DeleteOperationName};
+
+        public static OperationAuthorizationRequirement Approve =
+            new OperationAuthorizationRequirement {Name = Constants.ApproveOperationName};
+
+        public static OperationAuthorizationRequirement Reject =
+            new OperationAuthorizationRequirement {Name = Constants.RejectOperationName};
     }
 
     public class Constants
@@ -27,7 +33,8 @@ namespace GenericWarehouseWebsite.Authorization
         public static readonly string ReadOperationName = "Read";
         public static readonly string UpdateOperationName = "Update";
         public static readonly string DeleteOperationName = "Delete";
-
+        public static readonly string ApproveOperationName = "Approve";
+        public static readonly string RejectOperationName = "Reject";
 
         public static readonly string ContactAdministratorsRole =
             "Administrators";

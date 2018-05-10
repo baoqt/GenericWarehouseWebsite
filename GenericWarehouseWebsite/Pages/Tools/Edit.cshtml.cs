@@ -2,92 +2,83 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GenericWarehouseWebsite.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GenericWarehouseWebsite.Data;
 using GenericWarehouseWebsite.Models;
-using GenericWarehouseWebsite.Pages.Components;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Azure.KeyVault.Models;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace GenericWarehouseWebsite.Pages.Tools
 {
-    public class EditModel : DI_BasePageModel
+    public class EditModel : PageModel
     {
+        private readonly GenericWarehouseWebsite.Data.WarehouseContext _context;
 
-        public EditModel(
-            ApplicationDbContext context,
-            IAuthorizationService authorizationService,
-            UserManager<ApplicationUser> userManager)
-            : base(context, authorizationService, userManager)
+        public EditModel(GenericWarehouseWebsite.Data.WarehouseContext context)
         {
+            _context = context;
         }
 
         [BindProperty]
         public Tool Tool { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
-            Tool = await Context.Tool.FirstOrDefaultAsync(
-                m => m.ID == id);
-
-            if (Tool == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var isAuthorized = await AuthorizationService.AuthorizeAsync(
-                User, Tool,
-                InformationAuthorization.Update);
-            if (!isAuthorized.Succeeded)
+            //Tool = await _context.Tools.FirstOrDefaultAsync(m => m.ID == id);
+            Tool = await _context.Tools.FindAsync(id);
+            if (Tool == null)
             {
-                return new ChallengeResult();
+                return NotFound();
             }
-
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int id)
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            // Fetch Contact from DB to get OwnerID.
-            var contact = await Context
-                .Tool.AsNoTracking()
-                .FirstOrDefaultAsync(m => m.ID == id);
+            _context.Attach(Tool).State = EntityState.Modified;
+            var toolToUpdate = await _context.Tools.FindAsync(id);
 
-            if (contact == null)
+
+            if (await TryUpdateModelAsync<Tool>(
+                toolToUpdate,
+                "tool",
+                s => s.Bin, s => s.Quantity, s => s.PartNumber, s => s.Cost, s => s.Name, s => s.Description))
             {
-                return NotFound();
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    return RedirectToPage("./Index");
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ToolExists(Tool.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
             }
-
-            var isAuthorized = await AuthorizationService.AuthorizeAsync(
-                User, contact,
-                InformationAuthorization.Update);
-            if (!isAuthorized.Succeeded)
-            {
-                return new ChallengeResult();
-            }
-
-            Tool.OwnerID = contact.OwnerID;
-
-            Context.Attach(Tool).State = EntityState.Modified;
-
-            await Context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            return Page();
         }
 
-        private bool ContactExists(int id)
+        private bool ToolExists(int id)
         {
-            return Context.Tool.Any(e => e.ID == id);
+            return _context.Tools.Any(e => e.ID == id);
         }
     }
 }
