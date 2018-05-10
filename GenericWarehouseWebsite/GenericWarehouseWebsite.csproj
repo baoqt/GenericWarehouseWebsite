@@ -6,11 +6,17 @@
   <ItemGroup>
     <Compile Remove="Migrations\20180428003809_v14.cs" />
     <Compile Remove="Migrations\20180428003809_v14.Designer.cs" />
+    <Compile Remove="Migrations\Tool\20180510223334_v16.cs" />
+    <Compile Remove="Migrations\Tool\20180510223334_v16.Designer.cs" />
+    <Compile Remove="Migrations\Tool\20180510224004_v16.cs" />
+    <Compile Remove="Migrations\Tool\20180510224004_v16.Designer.cs" />
+    <Compile Remove="Migrations\Tool\20180510224333_v17.cs" />
+    <Compile Remove="Migrations\Tool\20180510224333_v17.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.2" />

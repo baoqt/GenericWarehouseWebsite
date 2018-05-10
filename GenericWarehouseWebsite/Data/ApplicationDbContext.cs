@@ -22,6 +22,8 @@ namespace GenericWarehouseWebsite.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
         public DbSet<GenericWarehouseWebsite.Models.Component> Component { get; set; }
+        public DbSet<GenericWarehouseWebsite.Models.Tool> Tool { get; set; }
+
 
     }
 }

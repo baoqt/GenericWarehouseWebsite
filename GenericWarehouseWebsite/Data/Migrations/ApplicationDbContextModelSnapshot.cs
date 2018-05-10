@@ -92,7 +92,31 @@ namespace GenericWarehouseWebsite.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Components");
+                    b.ToTable("Component");
+                });
+
+            modelBuilder.Entity("GenericWarehouseWebsite.Models.Tool", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Bin");
+
+                    b.Property<decimal>("Cost");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("OwnerID");
+
+                    b.Property<string>("PartNumber");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Tool");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
 namespace GenericWarehouseWebsite.Migrations
@@ -41,7 +39,7 @@ namespace GenericWarehouseWebsite.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Components");
+                    b.ToTable("Component");
                 });
 
             modelBuilder.Entity("GenericWarehouseWebsite.Models.Tool", b =>
@@ -65,7 +63,7 @@ namespace GenericWarehouseWebsite.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Tools");
+                    b.ToTable("Tool");
                 });
 #pragma warning restore 612, 618
         }
